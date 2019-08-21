@@ -1,5 +1,5 @@
 {
-    "name": "neo.cortex.bg/php-debug",
+    "name": "neocortexbg/php-debug",
     "description": "Php debug functions",
     "require": {
         "primal/color": "^1.0"
