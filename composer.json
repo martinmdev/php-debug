@@ -1,0 +1,15 @@
+{
+    "name": "neo.cortex.bg/php-debug",
+    "description": "Php debug functions",
+    "require": {
+        "primal/color": "^1.0"
+    },
+    "autoload": {
+        "files": [
+            "src/functions.php",
+            "src/dc.php"
+        ],
+        "psr-4": {
+        }
+    }
+}
