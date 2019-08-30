@@ -1,12 +1,13 @@
 <?php
-$links = [
-    [
-        'url' => 'example1.php',
-    ],
-    [
-        'url' => 'example2.php',
-    ],
-];
+$files = scandir(__DIR__);
+
+$links = [];
+foreach ($files as $f) {
+    if (strpos($f, 'example') === 0) {
+        $links[] = $f;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@ $links = [
     <ul>
         <?php foreach ($links as $l) : ?>
             <li>
-                <a href="<?php echo $l['url']; ?>"><?php echo $l['url']; ?></a>
+                <a href="<?php echo $l; ?>"><?php echo $l; ?></a>
             </li>
         <?php endforeach; ?>
     </ul>

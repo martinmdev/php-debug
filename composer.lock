@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90c29e2785fa848757b56f183f2075b2",
+    "content-hash": "fb8a6b1359ca31a3b3652266146d2757",
     "packages": [
         {
             "name": "primal/color",

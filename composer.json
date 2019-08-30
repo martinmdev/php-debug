@@ -8,7 +8,10 @@
         "files": [
             "src/functions.php",
             "src/dc.php"
-        ]
+        ],
+        "psr-4": {
+            "Martinm\\": "src"
+        }
     },
     "scripts": {
         "post-install-cmd": [
