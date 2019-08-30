@@ -1,5 +1,12 @@
 <?php
-
+$links = [
+    [
+        'url' => 'example1.php',
+    ],
+    [
+        'url' => 'example2.php',
+    ],
+];
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,9 +17,13 @@
 </head>
 
 <body>
-<ul>
-    <li><<a href="example1.php">example1.php</a></li>
-</ul>
+    <ul>
+        <?php foreach ($links as $l) : ?>
+            <li>
+                <a href="<?php echo $l['url']; ?>"><?php echo $l['url']; ?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 
 </html>

@@ -9,7 +9,14 @@
             "src/functions.php",
             "src/dc.php"
         ],
-        "psr-4": {
-        }
+        "psr-4": {}
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer dump-autoload"
+        ],
+        "post-update-cmd": [
+            "composer dump-autoload"
+        ]
     }
 }
