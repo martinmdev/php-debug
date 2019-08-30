@@ -1,5 +1,5 @@
 {
-    "name": "martinmde/php-debug",
+    "name": "martinmdev/php-debug",
     "description": "PHP debug functions",
     "require": {
         "primal/color": "^1.0"
