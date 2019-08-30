@@ -1,6 +1,6 @@
 {
-    "name": "neocortexbg/php-debug",
-    "description": "Php debug functions",
+    "name": "martinmde/php-debug",
+    "description": "PHP debug functions",
     "require": {
         "primal/color": "^1.0"
     },
@@ -8,8 +8,7 @@
         "files": [
             "src/functions.php",
             "src/dc.php"
-        ],
-        "psr-4": {}
+        ]
     },
     "scripts": {
         "post-install-cmd": [
