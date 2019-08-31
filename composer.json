@@ -1,9 +1,13 @@
 {
     "name": "martinmdev/php-debug",
     "description": "PHP debug functions",
+    "type": "package",
     "require": {
+        "php": ">=7.0",
         "primal/color": "^1.0"
     },
+    "license": "mit",
+    "minimum-stability": "dev",
     "autoload": {
         "files": [
             "src/functions.php",
