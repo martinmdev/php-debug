@@ -3,6 +3,7 @@
 ini_set("xdebug.var_display_max_children", -1);
 ini_set("xdebug.var_display_max_data", -1);
 ini_set("xdebug.var_display_max_depth", -1);
+ini_set("xdebug.overload_var_dump", 1);
 
 /**
  * Dump and Die
@@ -50,7 +51,7 @@ function ppd($return = false)
 
 function vd()
 {
-    var_dump(func_get_args());
+    var_dump(...func_get_args());
 }
 
 function a($url)
