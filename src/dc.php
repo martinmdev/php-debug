@@ -1,5 +1,52 @@
 <?php
 
+// checkErrorReporting();
+
+function checkErrorReporting()
+{
+    $allConstants = get_defined_constants();
+
+    $errorConstants = [];
+    $errorLevels = [];
+    foreach ($allConstants as $k => $v) {
+        if (strpos($k, 'E_') === 0) {
+            $errorConstants[$k] = $v;
+            $errorLevels[$v] = [
+                'constant' => $k,
+            ];
+        }
+    }
+
+    $errorReportingDec = error_reporting();
+
+    $errorReportingBin = decbin($errorReportingDec);
+
+    foreach ($errorLevels as $k => $v) {
+        $errorDec = $k;
+        $errorBin = decbin($errorDec);
+
+        $resDec = $errorReportingDec & $errorDec;
+
+        $resBin = decbin($resDec);
+
+        $isSet = $resBin === $errorBin;
+
+        $v['isSet'] = $isSet;
+
+        $errorLevels[$k] = $v;
+    }
+
+    $wantedErrorLevels = [
+        E_ALL,
+    ];
+
+    foreach ($wantedErrorLevels as $lvl) {
+        if (!isset($errorLevels[$lvl]['isSet']) || !($errorLevels[$lvl]['isSet'])) {
+            throw new \Exception('Wanted error level not set');
+        }
+    }
+}
+
 class DebugHelper
 {
     public static $enableDc = true;
@@ -54,6 +101,8 @@ function dc($x = null)
     static $dumpedLines = [];
     static $dumpedMethods = [];
 
+    $isCli = \PHP_SAPI === 'cli';
+
     $trace = debug_backtrace();
     $fileLine = $trace[0]['file'] . ":" . $trace[0]['line'];
     $printFileLines = $fileLine;
@@ -63,8 +112,11 @@ function dc($x = null)
         if (isset($trace[1]['class'])) {
             $method = $trace[1]['class'] . "::" . $method;
         }
-
-        $printFileLines = "$printFileLines <strong>(" . $method . ")</strong>";
+        if ($isCli) {
+            $printFileLines = "$printFileLines (" . $method . ")";
+        } else {
+            $printFileLines = "$printFileLines <strong>(" . $method . ")</strong>";
+        }
     }
     $dumpedLines[$fileLine] = true;
     $dumpedMethods[$method] = true;
@@ -78,13 +130,32 @@ function dc($x = null)
     $styleIndex = $positionInDumpedMethods % count(DebugHelper::$debugStyles);
 //    ppv($styleIndex);
 
-    $printFileLines = "<strong style='position: relative; left: -15px;'>" . $positionInDumpedLines . "</strong>" . $printFileLines;
+    if ($isCli) {
+        $printFileLines = "# " . $positionInDumpedLines . " " . $printFileLines;
+    } else {
+        $printFileLines = "<strong style='position: relative; left: -15px;'>" . $positionInDumpedLines . "</strong>" . $printFileLines;
+    }
 
-    $s = "";
-    $s .= "<div style='padding: 1px; padding-left: 20px;" . DebugHelper::$debugStyles[$styleIndex] . "'>";
+    $s = '';
+
+    if (!$isCli) {
+        $s .= "<div style='padding: 1px; padding-left: 20px;" . DebugHelper::$debugStyles[$styleIndex] . "'>";
+    }
+
     $s .= pp($printFileLines, true);
-    $s .= func_num_args() ? ppv($x, true) : '';
-    $s .= "</div>";
+
+    if (func_num_args()) {
+        $s .= \PHP_EOL;
+        $s .= ppv(func_get_args(), true);
+    }
+
+    if (!$isCli) {
+        $s .= "</div>";
+    }
+
+    // if (!func_num_args()) {
+        $s .= \PHP_EOL;
+    // }
 
     echo $s;
 }
