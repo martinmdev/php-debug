@@ -107,3 +107,11 @@ function eed()
     $s = (new \Exception())->getTraceAsString();
     ee($s);
 }
+
+function render($file, $data)
+{
+    ob_start();
+    extract($data);
+    require $file;
+    return ob_get_clean();
+}
