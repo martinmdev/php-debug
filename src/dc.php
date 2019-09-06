@@ -98,6 +98,16 @@ function dc($x = null)
     if (!DebugHelper::$enableDc) {
         return;
     }
+
+    $maxCalls = 10;
+    static $countCalls;
+    if (!isset($countCalls)) {
+        $countCalls = 0;
+    }
+    $countCalls++;
+    if ($countCalls > $maxCalls) {
+        dd('Max calls reached');
+    }
     static $dumpedLines = [];
     static $dumpedMethods = [];
 
@@ -154,7 +164,7 @@ function dc($x = null)
     }
 
     // if (!func_num_args()) {
-        $s .= \PHP_EOL;
+    $s .= \PHP_EOL;
     // }
 
     echo $s;
