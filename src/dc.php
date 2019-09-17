@@ -52,6 +52,7 @@ class DebugHelper
     public static $enableDc = true;
     // public static $enableDc = false;
     public static $debugStyles = [];
+    public static $debugCliStyles = [];
     public static $numberOfColors = 10;
 
     public static function init()
@@ -88,6 +89,59 @@ class DebugHelper
             self::$debugStyles[] = "background-color: " . $bgColor . "; color: #" . $color . ";";
         }
 //        ppv(self::$debugStyles);
+
+        // $cliBgColors = range(41, 51);
+
+        // $start = 0;
+        // $step = 1;
+        // // $step = 2;
+        // // $step = 5;
+        // $limit = 400;
+        // $cliBgColors = [];
+        // while ($limit--) {
+        //     $cliBgColors[] = $start;
+        //     $start += $step;
+        // }
+
+        // foreach ($cliBgColors as $bgCliColor) {
+        //     $s = '';
+        //     $s .= "\e[" . $bgCliColor . "m";
+        //     $s .= 'Hello world';
+        //     $s .= 'Color: ' . $bgCliColor. ' ';
+        //     $s .= "\e[0m";
+        //     $s .= PHP_EOL;
+        //
+        //     echo $s;
+        //
+        //     self::$debugCliStyles[] = [
+        //         'bgColor' => $bgCliColor,
+        //     ];
+        // }
+
+        $saved = [
+            7,
+
+            // 3* are fg
+            // 31,
+            // 32,
+            // 33,
+            // 34,
+            // 35,
+            // 36,
+
+            41,
+            44,
+            45,
+            100,
+            101,
+            104,
+        ];
+
+        foreach ($saved as $int) {
+            self::$debugCliStyles[] = [
+                'bgColor' => $int,
+            ];
+        }
     }
 }
 
@@ -99,7 +153,7 @@ function dc($x = null)
         return;
     }
 
-    $maxCalls = 10;
+    $maxCalls = 100;
     static $countCalls;
     if (!isset($countCalls)) {
         $countCalls = 0;
@@ -108,6 +162,7 @@ function dc($x = null)
     if ($countCalls > $maxCalls) {
         dd('Max calls reached');
     }
+
     static $dumpedLines = [];
     static $dumpedMethods = [];
 
@@ -138,6 +193,7 @@ function dc($x = null)
 //    $styleIndex = (count(DebugStyles::$debugStyles) - 1 ) % $positionInDumpedLines;
 //    $styleIndex = (count(DebugHelper::$debugStyles) - 1 ) % $positionInDumpedMethods;
     $styleIndex = $positionInDumpedMethods % count(DebugHelper::$debugStyles);
+    $styleCliIndex = $positionInDumpedMethods % count(DebugHelper::$debugCliStyles);
 //    ppv($styleIndex);
 
     if ($isCli) {
@@ -154,13 +210,30 @@ function dc($x = null)
 
     $s .= pp($printFileLines, true);
 
-    if (func_num_args()) {
+    $numArgs = func_num_args();
+    if ($numArgs) {
         $s .= \PHP_EOL;
-        $s .= ppv(func_get_args(), true);
+        if ($numArgs === 1) {
+            $s .= ppv($x, true);
+        } else {
+            $s .= ppv(func_get_args(), true);
+        }
     }
 
     if (!$isCli) {
         $s .= "</div>";
+    }
+
+    if ($isCli) {
+        // vd($s);
+        // vd(DebugHelper::$debugStyles[$styleIndex]);
+        // dd(999999);
+        // $s = '\e[41m' . $s . '\e[0m';
+        $bgCliColor = DebugHelper::$debugCliStyles[$styleCliIndex]['bgColor'];
+        // $bgCliColor = DebugHelper::$debugCliStyles[$positionInDumpedLines]['bgColor'];
+
+        // $s = "\e[41m" . $s . "\e[0m";
+        $s = "\e[" . $bgCliColor . "m" . $s . "\e[0m";
     }
 
     // if (!func_num_args()) {
