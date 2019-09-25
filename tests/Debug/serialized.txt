@@ -1,0 +1,71 @@
+a:27:{i:0;a:2:{i:0;s:25:"DebugHelper/example-a.php";i:1;s:89:"<a href="http://example.com/foo/bar" target="_blank">http://example.com/foo/bar</a><br />";}i:1;a:2:{i:0;s:26:"DebugHelper/example-dm.php";i:1;s:120:"array(1) {
+  [0] =>
+  string(82) "/Users/martin/projects/neocortexbg/php-debug/examples/DebugHelper/example-dm.php:7"
+}
+";}i:2;a:2:{i:0;s:35:"DebugHelper/example-xdebugReset.php";i:1;N;}i:3;a:2:{i:0;s:27:"DebugHelper/example-eed.php";i:1;s:244:"/Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:120 (Martinm\Debug\DebugHelper::eed):'#0 /Users/martin/projects/neocortexbg/php-debug/examples/DebugHelper/example-eed.php(7): Martinm\\Debug\\DebugHelper->eed()
+#1 {main}'
+";}i:4;a:2:{i:0;s:30:"DebugHelper/example-render.php";i:1;N;}i:5;a:2:{i:0;s:27:"DebugHelper/example-ddc.php";i:1;s:140:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:365 (Martinm\Debug\DebugHelper::ddc)
+string(5) "hello"
+[0m
+";}i:6;a:2:{i:0;s:26:"DebugHelper/example-vd.php";i:1;s:31:"array(1) {
+  'x' =>
+  int(1)
+}
+";}i:7;a:2:{i:0;s:25:"DebugHelper/example-a.php";i:1;s:89:"<a href="http://example.com/foo/bar" target="_blank">http://example.com/foo/bar</a><br />";}i:8;a:2:{i:0;s:26:"DebugHelper/example-dd.php";i:1;s:42:"array(1) {
+  [0] =>
+  string(5) "hello"
+}
+";}i:9;a:2:{i:0;s:27:"DebugHelper/example-ppd.php";i:1;s:147:"string(131) "#0 /Users/martin/projects/neocortexbg/php-debug/examples/DebugHelper/example-ppd.php(7): Martinm\Debug\DebugHelper->ppd()
+#1 {main}"
+1";}i:10;a:2:{i:0;s:26:"DebugHelper/example-ee.php";i:1;s:83:"/Users/martin/projects/neocortexbg/php-debug/examples/DebugHelper/example-ee.php:7
+";}i:11;a:2:{i:0;s:27:"DebugHelper/example-ppv.php";i:1;s:71:"array(2) {
+  'x' =>
+  string(6) "I am x"
+  'y' =>
+  string(4) "y123"
+}
+";}i:12;a:2:{i:0;s:26:"DebugHelper/example-dc.php";i:1;s:115:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/examples/DebugHelper/example-dc.php:7
+string(5) "hello"
+[0m
+";}i:13;a:2:{i:0;s:26:"DebugHelper/example-pp.php";i:1;s:44:"Array
+(
+    [x] => I am x
+    [y] => y123
+)
+";}i:14;a:2:{i:0;s:22:"helpers/example-dm.php";i:1;s:129:"array(1) {
+  [0] =>
+  string(91) "/Users/martin/projects/neocortexbg/php-debug/src/Debug/helpers.php:64 <strong>(dm)</strong>"
+}
+";}i:15;a:2:{i:0;s:31:"helpers/example-xdebugReset.php";i:1;N;}i:16;a:2:{i:0;s:23:"helpers/example-eed.php";i:1;s:321:"/Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:120 (Martinm\Debug\DebugHelper::eed):'#0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/helpers.php(80): Martinm\\Debug\\DebugHelper->eed()
+#1 /Users/martin/projects/neocortexbg/php-debug/examples/helpers/example-eed.php(5): eed()
+#2 {main}'
+";}i:17;a:2:{i:0;s:26:"helpers/example-render.php";i:1;N;}i:18;a:2:{i:0;s:23:"helpers/example-ddc.php";i:1;s:140:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:365 (Martinm\Debug\DebugHelper::ddc)
+string(5) "hello"
+[0m
+";}i:19;a:2:{i:0;s:22:"helpers/example-vd.php";i:1;s:31:"array(1) {
+  'x' =>
+  int(1)
+}
+";}i:20;a:2:{i:0;s:21:"helpers/example-a.php";i:1;s:89:"<a href="http://example.com/foo/bar" target="_blank">http://example.com/foo/bar</a><br />";}i:21;a:2:{i:0;s:22:"helpers/example-dd.php";i:1;s:42:"array(1) {
+  [0] =>
+  string(5) "hello"
+}
+";}i:22;a:2:{i:0;s:23:"helpers/example-ppd.php";i:1;s:229:"string(213) "#0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/helpers.php(40): Martinm\Debug\DebugHelper->ppd(false)
+#1 /Users/martin/projects/neocortexbg/php-debug/examples/helpers/example-ppd.php(5): ppd()
+#2 {main}"
+1";}i:23;a:2:{i:0;s:22:"helpers/example-ee.php";i:1;s:75:"/Users/martin/projects/neocortexbg/php-debug/src/Debug/helpers.php:72 (ee)
+";}i:24;a:2:{i:0;s:23:"helpers/example-ppv.php";i:1;s:71:"array(2) {
+  'x' =>
+  string(6) "I am x"
+  'y' =>
+  string(4) "y123"
+}
+";}i:25;a:2:{i:0;s:22:"helpers/example-dc.php";i:1;s:107:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/helpers.php:96 (dc)
+string(5) "hello"
+[0m
+";}i:26;a:2:{i:0;s:22:"helpers/example-pp.php";i:1;s:44:"Array
+(
+    [x] => I am x
+    [y] => y123
+)
+";}}
