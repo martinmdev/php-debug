@@ -11,6 +11,7 @@ class DebugTest extends TestCase
      */
     public function test1($example, $expectedOutput)
     {
+        $rootInCases = '/Users/martin/projects/neocortexbg/php-debug';
         $root = realpath(__DIR__ . '/../../');
 
         $path = __DIR__ . '/../../examples/' . $example;
@@ -19,6 +20,9 @@ class DebugTest extends TestCase
         $cmd .= ' 2>&1 ';
 
         $res = shell_exec($cmd);
+
+        $res = str_replace($rootInCases, '', $res);
+        $expectedOutput = str_replace($rootInCases, '', $expectedOutput);
 
         $res = str_replace($root, '', $res);
         $expectedOutput = str_replace($root, '', $expectedOutput);
