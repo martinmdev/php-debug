@@ -4,7 +4,7 @@ a:27:{i:0;a:2:{i:0;s:25:"DebugHelper/example-a.php";i:1;s:89:"<a href="http://ex
 }
 ";}i:2;a:2:{i:0;s:35:"DebugHelper/example-xdebugReset.php";i:1;N;}i:3;a:2:{i:0;s:27:"DebugHelper/example-eed.php";i:1;s:244:"/Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:120 (Martinm\Debug\DebugHelper::eed):'#0 /Users/martin/projects/neocortexbg/php-debug/examples/DebugHelper/example-eed.php(7): Martinm\\Debug\\DebugHelper->eed()
 #1 {main}'
-";}i:4;a:2:{i:0;s:30:"DebugHelper/example-render.php";i:1;N;}i:5;a:2:{i:0;s:27:"DebugHelper/example-ddc.php";i:1;s:140:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:365 (Martinm\Debug\DebugHelper::ddc)
+";}i:4;a:2:{i:0;s:30:"DebugHelper/example-render.php";i:1;N;}i:5;a:2:{i:0;s:27:"DebugHelper/example-ddc.php";i:1;s:140:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:274 (Martinm\Debug\DebugHelper::ddc)
 string(5) "hello"
 [0m
 ";}i:6;a:2:{i:0;s:26:"DebugHelper/example-vd.php";i:1;s:31:"array(1) {
@@ -39,7 +39,7 @@ string(5) "hello"
 ";}i:15;a:2:{i:0;s:31:"helpers/example-xdebugReset.php";i:1;N;}i:16;a:2:{i:0;s:23:"helpers/example-eed.php";i:1;s:321:"/Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:120 (Martinm\Debug\DebugHelper::eed):'#0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/helpers.php(80): Martinm\\Debug\\DebugHelper->eed()
 #1 /Users/martin/projects/neocortexbg/php-debug/examples/helpers/example-eed.php(5): eed()
 #2 {main}'
-";}i:17;a:2:{i:0;s:26:"helpers/example-render.php";i:1;N;}i:18;a:2:{i:0;s:23:"helpers/example-ddc.php";i:1;s:140:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:365 (Martinm\Debug\DebugHelper::ddc)
+";}i:17;a:2:{i:0;s:26:"helpers/example-render.php";i:1;N;}i:18;a:2:{i:0;s:23:"helpers/example-ddc.php";i:1;s:140:"[41m# 0 /Users/martin/projects/neocortexbg/php-debug/src/Debug/DebugHelper.php:274 (Martinm\Debug\DebugHelper::ddc)
 string(5) "hello"
 [0m
 ";}i:19;a:2:{i:0;s:22:"helpers/example-vd.php";i:1;s:31:"array(1) {

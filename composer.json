@@ -3,7 +3,6 @@
     "license": "MIT",
     "description": "PHP Debug functions",
     "require": {
-        "primal/color": "^1.0"
     },
     "autoload": {
         "files": [

@@ -129,51 +129,6 @@ class DebugHelper
         return ob_get_clean();
     }
 
-    public function checkErrorReporting()
-    {
-        $allConstants = get_defined_constants();
-
-        $errorConstants = [];
-        $errorLevels = [];
-        foreach ($allConstants as $k => $v) {
-            if (strpos($k, 'E_') === 0) {
-                $errorConstants[$k] = $v;
-                $errorLevels[$v] = [
-                    'constant' => $k,
-                ];
-            }
-        }
-
-        $errorReportingDec = error_reporting();
-
-        $errorReportingBin = decbin($errorReportingDec);
-
-        foreach ($errorLevels as $k => $v) {
-            $errorDec = $k;
-            $errorBin = decbin($errorDec);
-
-            $resDec = $errorReportingDec & $errorDec;
-
-            $resBin = decbin($resDec);
-
-            $isSet = $resBin === $errorBin;
-
-            $v['isSet'] = $isSet;
-
-            $errorLevels[$k] = $v;
-        }
-
-        $wantedErrorLevels = [
-            E_ALL,
-        ];
-
-        foreach ($wantedErrorLevels as $lvl) {
-            if (!isset($errorLevels[$lvl]['isSet']) || !($errorLevels[$lvl]['isSet'])) {
-                throw new \Exception('Wanted error level not set');
-            }
-        }
-    }
-
     public static $colors1 = [
         0 => '#ffffdb',
         1 => '#dcffdb',
@@ -188,54 +143,19 @@ class DebugHelper
         10 => '#7279da',
         11 => '#d172da',
     ];
+
     public static $enableDc = true;
-    // public static $enableDc = false;
     public static $debugStyles = [];
     public static $debugCliStyles = [];
     public static $numberOfColors = 10;
 
     public static function init()
     {
-        $maxColorInt = 16777215;
-        $step = (int)($maxColorInt / self::$numberOfColors);
-
-//        for($i = 0; $i <= $maxColorInt; $i += $step) {
         foreach (self::$colors1 as $c) {
-//            $bgColor = sprintf('%06s', dechex($i));
             $bgColor = $c;
-//            $color = "ffffff";
             $color = "000000";
             self::$debugStyles[] = "background-color: " . $bgColor . "; color: #" . $color . ";";
         }
-//        ppv(self::$debugStyles);
-
-        // $cliBgColors = range(41, 51);
-
-        // $start = 0;
-        // $step = 1;
-        // // $step = 2;
-        // // $step = 5;
-        // $limit = 400;
-        // $cliBgColors = [];
-        // while ($limit--) {
-        //     $cliBgColors[] = $start;
-        //     $start += $step;
-        // }
-
-        // foreach ($cliBgColors as $bgCliColor) {
-        //     $s = '';
-        //     $s .= "\e[" . $bgCliColor . "m";
-        //     $s .= 'Hello world';
-        //     $s .= 'Color: ' . $bgCliColor. ' ';
-        //     $s .= "\e[0m";
-        //     $s .= PHP_EOL;
-        //
-        //     echo $s;
-        //
-        //     self::$debugCliStyles[] = [
-        //         'bgColor' => $bgCliColor,
-        //     ];
-        // }
 
         $saved = [
             7,
@@ -304,14 +224,11 @@ class DebugHelper
         $dumpedMethods[$method] = true;
         $positionInDumpedLines = array_search($fileLine, array_keys($dumpedLines));
         $positionInDumpedMethods = array_search($method, array_keys($dumpedMethods));
-//    ppv($position);
-//    $positionInDumpedLines++;
+
         $positionInDumpedMethods++;
-//    $styleIndex = (count(DebugStyles::$debugStyles) - 1 ) % $positionInDumpedLines;
-//    $styleIndex = (count(DebugHelper::$debugStyles) - 1 ) % $positionInDumpedMethods;
+
         $styleIndex = $positionInDumpedMethods % count(DebugHelper::$debugStyles);
         $styleCliIndex = $positionInDumpedMethods % count(DebugHelper::$debugCliStyles);
-//    ppv($styleIndex);
 
         if ($isCli) {
             $printFileLines = "# " . $positionInDumpedLines . " " . $printFileLines;
@@ -342,20 +259,12 @@ class DebugHelper
         }
 
         if ($isCli) {
-            // vd($s);
-            // vd(DebugHelper::$debugStyles[$styleIndex]);
-            // dd(999999);
-            // $s = '\e[41m' . $s . '\e[0m';
             $bgCliColor = DebugHelper::$debugCliStyles[$styleCliIndex]['bgColor'];
-            // $bgCliColor = DebugHelper::$debugCliStyles[$positionInDumpedLines]['bgColor'];
 
-            // $s = "\e[41m" . $s . "\e[0m";
             $s = "\e[" . $bgCliColor . "m" . $s . "\e[0m";
         }
 
-        // if (!func_num_args()) {
         $s .= \PHP_EOL;
-        // }
 
         echo $s;
     }
