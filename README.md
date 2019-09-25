@@ -1,7 +1,12 @@
 PHP Debug functions
 ===================
 
-badges to come
+[![codecov](https://codecov.io/gh/martinmdev/php-debug/branch/master/graph/badge.svg)](https://codecov.io/gh/martinmdev/php-debug)
+[![Build Status](https://travis-ci.com/martinmdev/php-debug.svg?branch=master)](https://travis-ci.com/martinmdev/php-debug)
+[![Latest Stable Version](https://poser.pugx.org/martinmdev/php-debug/v/stable)](https://packagist.org/packages/martinmdev/php-debug)
+[![Total Downloads](https://poser.pugx.org/martinmdev/php-debug/downloads)](https://packagist.org/packages/martinmdev/php-debug)
+[![Latest Unstable Version](https://poser.pugx.org/martinmdev/php-debug/v/unstable)](https://packagist.org/packages/martinmdev/php-debug)
+[![License](https://poser.pugx.org/martinmdev/php-debug/license)](https://packagist.org/packages/martinmdev/php-debug)
 
 Usage
 -----
