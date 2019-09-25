@@ -2,13 +2,23 @@
 
 namespace Martinm\Debug;
 
+/**
+ * Class DebugHelper
+ * @package Martinm\Debug
+ */
 class DebugHelper
 {
+    /**
+     * @return static
+     */
     public static function create()
     {
         return new static();
     }
 
+    /**
+     *
+     */
     public function xdebugReset()
     {
         ini_set("xdebug.var_display_max_children", -1);
@@ -32,6 +42,12 @@ class DebugHelper
         die();
     }
 
+    /**
+     * @param      $v
+     * @param bool $return
+     *
+     * @return int|string
+     */
     public function pp($v, $return = false)
     {
         $s = "";
@@ -46,6 +62,12 @@ class DebugHelper
         return $return ? $s : (print $s);
     }
 
+    /**
+     * @param      $v
+     * @param bool $return
+     *
+     * @return int|string
+     */
     public function ppv($v, $return = false)
     {
         ob_start();
@@ -54,6 +76,11 @@ class DebugHelper
         return $this->pp(ob_get_clean(), $return);
     }
 
+    /**
+     * @param bool $return
+     *
+     * @return int|string
+     */
     public function ppd($return = false)
     {
         $s = $this->ppv((new \Exception())->getTraceAsString(), $return);
@@ -61,16 +88,25 @@ class DebugHelper
         return $return ? $s : (print $s);
     }
 
+    /**
+     *
+     */
     public function vd()
     {
         var_dump(...func_get_args());
     }
 
+    /**
+     * @param $url
+     */
     public function a($url)
     {
         echo '<a href="' . $url . '" target="_blank">' . $url . '</a><br />';
     }
 
+    /**
+     *
+     */
     public function dm()
     {
         $trace = debug_backtrace();
@@ -89,6 +125,9 @@ class DebugHelper
         $this->dd($printFileLines);
     }
 
+    /**
+     *
+     */
     public function ee()
     {
         $trace = debug_backtrace();
@@ -114,12 +153,21 @@ class DebugHelper
         error_log($log);
     }
 
+    /**
+     *
+     */
     public function eed()
     {
         $s = (new \Exception())->getTraceAsString();
         $this->ee($s);
     }
 
+    /**
+     * @param $file
+     * @param $data
+     *
+     * @return false|string
+     */
     public function render($file, $data)
     {
         ob_start();
@@ -129,6 +177,9 @@ class DebugHelper
         return ob_get_clean();
     }
 
+    /**
+     * @var array
+     */
     public static $colors1 = [
         0 => '#ffffdb',
         1 => '#dcffdb',
@@ -144,11 +195,26 @@ class DebugHelper
         11 => '#d172da',
     ];
 
+    /**
+     * @var bool
+     */
     public static $enableDc = true;
+    /**
+     * @var array
+     */
     public static $debugStyles = [];
+    /**
+     * @var array
+     */
     public static $debugCliStyles = [];
+    /**
+     * @var int
+     */
     public static $numberOfColors = 10;
 
+    /**
+     *
+     */
     public static function init()
     {
         foreach (self::$colors1 as $c) {
@@ -184,6 +250,9 @@ class DebugHelper
     }
 
 
+    /**
+     * @param null $x
+     */
     public function dc($x = null)
     {
         if (!DebugHelper::$enableDc) {
@@ -269,6 +338,9 @@ class DebugHelper
         echo $s;
     }
 
+    /**
+     * @param null $x
+     */
     public function ddc($x = null)
     {
         $this->dc($x);
