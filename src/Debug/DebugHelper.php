@@ -274,14 +274,23 @@ class DebugHelper
 
         $isCli = \PHP_SAPI === 'cli';
 
+        $offsetFile = 0;
+        $offsetFunction = 1;
+
         $trace = debug_backtrace();
-        $fileLine = $trace[0]['file'] . ":" . $trace[0]['line'];
+
+        if ($trace[1]['function'] === 'dc') {
+            $offsetFile++;
+            $offsetFunction++;
+        }
+
+        $fileLine = $trace[$offsetFile]['file'] . ":" . $trace[$offsetFile]['line'];
         $printFileLines = $fileLine;
         $method = "n/a";
-        if (isset($trace[1]['function'])) {
-            $method = $trace[1]['function'];
-            if (isset($trace[1]['class'])) {
-                $method = $trace[1]['class'] . "::" . $method;
+        if (isset($trace[$offsetFunction]['function'])) {
+            $method = $trace[$offsetFunction]['function'];
+            if (isset($trace[$offsetFunction]['class'])) {
+                $method = $trace[$offsetFunction]['class'] . "::" . $method;
             }
             if ($isCli) {
                 $printFileLines = "$printFileLines (" . $method . ")";
